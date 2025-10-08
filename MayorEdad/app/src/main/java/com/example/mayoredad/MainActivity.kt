@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         val numero : EditText = findViewById<EditText>(R.id.editTextText)
         val boton : Button = findViewById<Button>(R.id.button)
         val texto : TextView = findViewById<TextView>(R.id.textView2)
+        val menos : Button = findViewById(R.id.menos)
+        val mas : Button = findViewById(R.id.mas)
         boton.setOnClickListener {
             //recoger el valor del campo texto, tendremos que pasarlo a entero
             val numeroRes = numero.text.toString().toIntOrNull()
@@ -44,6 +46,18 @@ class MainActivity : AppCompatActivity() {
             else if (numeroRes > 18)"Eres mayor de edad"
             else "Tienes justo 18 años"
             
+        }
+
+        menos.setOnClickListener {
+            val valorActual = numero.text.toString().toIntOrNull() ?: 0
+            val nuevoValor = if (valorActual > 0) valorActual - 1 else 0
+            numero.setText(nuevoValor.toString())
+        }
+
+        mas.setOnClickListener {
+            val valorActual = numero.text.toString().toIntOrNull() ?: 0
+            val nuevoValor = valorActual + 1
+            numero.setText(nuevoValor.toString())
         }
     }
 
